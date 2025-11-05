@@ -5,16 +5,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import joblib
-import os
+import os, sys
+from model import predict_conditional, FlexibleNN
 
 DEVICE = torch.device('cpu')
 MODEL_FOLDER = 'models_folder'
 
+encoder = joblib.load(os.path.join(MODEL_FOLDER, 'one_hot_encoder_models.joblib'))
+model = FlexibleNN(6, [], "elu", 0.0)
+model.load_state_dict(torch.load(os.path.join(MODEL_FOLDER,'./modelo_state_dict.pt'),map_location=DEVICE))
+model.eval()
 
 # --- Function to update the plot ---
-def update_plot(ax, canvas, func_var, xrange_var):
+def update_plot(ax, canvas, func_var, Zp_var, Zt_var, xrange_var):
     """Updates the plot based on the selected function and x-range."""
     func = func_var.get()
+    Zp = int(Zp_var.get())
+    Zt = int(Zt_var.get())
 
     # Parse user range
     try:
@@ -27,24 +34,19 @@ def update_plot(ax, canvas, func_var, xrange_var):
     x = np.linspace(x_min, x_max, 300)
 
     # Choose function
-    if func == "sin(x)":
-        y = np.sin(x)
-    elif func == "cos(x)":
-        y = np.cos(x)
-    elif func == "exp(x)":
-        y = np.exp(x)
-    elif func == "x^2":
-        y = x**2
+    if func in ["CDW-EIS", "CTMC", "Semiempiric_1985Rudd"]:
+        y = predict_conditional(model, encoder, func, Zp, Zt, np.log10(x))
     else:
         y = np.zeros_like(x)
+        messagebox.showerror("Wrong Model")
 
     # Update plot
     ax.clear()
-    ax.plot(x, y, label=func)
+    ax.loglog(x, y, label=func)
     ax.legend()
-    ax.set_title(f"f(x) = {func}")
-    ax.set_xlabel("x")
-    ax.set_ylabel("y")
+    ax.set_title(f"Theory: {func}")
+    ax.set_xlabel("Projectile Energy (keV/u)")
+    ax.set_ylabel(r"Cross Section (cm$^2$)")
     canvas.draw()
 
 
@@ -52,7 +54,7 @@ def update_plot(ax, canvas, func_var, xrange_var):
 def main():
     root = tk.Tk()
     root.title("Function Plotter")
-    root.geometry("800x500")
+    root.geometry("900x500")
 
     # Layout setup
     root.columnconfigure(0, weight=1)
@@ -63,16 +65,31 @@ def main():
     control_frame = ttk.Frame(root, padding=10)
     control_frame.grid(row=0, column=0, sticky="nswe")
 
-    ttk.Label(control_frame, text="Select function:").pack(anchor="w", pady=5)
+    ttk.Label(control_frame, text="Select Theory:").pack(anchor="w", pady=5)
     func_var = tk.StringVar()
     func_combo = ttk.Combobox(control_frame, textvariable=func_var, state="readonly")
-    func_combo['values'] = ("sin(x)", "cos(x)", "exp(x)", "x^2")
+    func_combo['values'] = ("CDW-EIS", "CTMC", "Semiempiric_1985Rudd")
     func_combo.current(0)
     func_combo.pack(fill="x", pady=5)
 
     ttk.Label(control_frame, text="Enter x range (e.g. 0,10):").pack(anchor="w", pady=5)
-    xrange_var = tk.StringVar(value="0,10")
+    xrange_var = tk.StringVar(value="100,200")
     ttk.Entry(control_frame, textvariable=xrange_var).pack(fill="x", pady=5)
+
+    Zp_var = tk.StringVar()
+    Zp_var.set('1')
+    label_Zp = ttk.Label(text="Projectile Charge:")
+    label_Zp.place(x=10, y=300, width=200)
+    spin_Zp = ttk.Spinbox(from_=1, to=9, increment=1, textvariable=Zp_var, state="readonly")
+    spin_Zp.place(x=170, y=300, width=50)
+
+    Zt_var = tk.StringVar()
+    Zt_var.set('1')
+    label_Zt = ttk.Label(text="Target atomic number:")
+    label_Zt.place(x=10, y=350, width=200)
+    spin_Zt = ttk.Spinbox(from_=1, to=1, increment=1, textvariable=Zt_var, state="readonly")
+    spin_Zt.place(x=170, y=350, width=50)
+
 
     # --- Right plot area ---
     plot_frame = ttk.Frame(root)
@@ -87,13 +104,20 @@ def main():
     ttk.Button(
         control_frame,
         text="Update Plot",
-        command=lambda: update_plot(ax, canvas, func_var, xrange_var)
+        command=lambda: update_plot(ax, canvas, func_var, Zp_var, Zt_var, xrange_var)
     ).pack(fill="x", pady=10)
 
     # Initial plot
-    update_plot(ax, canvas, func_var, xrange_var)
+    update_plot(ax, canvas, func_var, Zp_var, Zt_var, xrange_var)
+
+    def on_closing_window():
+        root.destroy()
+        sys.exit() # Terminate the Python script
+
+    root.protocol("WM_DELETE_WINDOW", on_closing_window)
 
     root.mainloop()
+
 
 
 if __name__ == "__main__":
