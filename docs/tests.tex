@@ -1,0 +1,185 @@
+\documentclass[aps,pra]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Some model tests}
+
+\author{Author Name}
+\affiliation{Affiliation}
+
+\date{\today}
+
+\begin{abstract}
+Some numerical test about training and testing of cross section fitting 
+using neural networks
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+We use a neural network as universal interpolator to 
+fit calculations of total cross sections (TCS) within two theoretical 
+models, namely the Continuum-Distorted-Wave with Eikonal-Initial
+-State (CDW-EIS) and the Classical Trajectory MonteCarlo (CTMC)
+for ionization of hydrogen by bare ion impact. Here we consider
+bare projectiles with charges $Z_P$ ranging between 1 and 9 
+
+\section{Methods}
+\label{sec:methods}
+
+We use PyTorch framework to optimize the fitting of a multilayer 
+perceptron (MLP) over a set of pre-calculated ionization TCS.
+
+The architecture of the MLP has an input of the projectile impact 
+energy, the charge of the projectile and the theory used
+
+\begin{itemize}
+    \item Impact energy: we use decimal logarithm to flat the data in 
+    usable ranges $\approx 10$
+    \item Projectile charge: casted to float
+    \item Theory: we one-hot encode the theory used (CTMC, CDW-EIS and 
+    semi-empirical formula for proton impact by Rudd et al.)
+\end{itemize}
+
+To understand the representation capability (fitting capability) 
+we use 3 identical hidden layers. We explore the case of 32, 64 or 
+128 hidden units per layer. For non-linearity we use as activation 
+functions infinite-differentiable functions, namely: the so used 
+$\tanh$ and a gaussian activation.
+
+The output layer represent the TCS. In the training stage 
+we optimize the network against the decimal logarithm of the TCS 
+in $cm^2$ to deal with numbers around 10. 
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Training process}
+In Fig. \ref{fig:training_losses} we show the losses evolution during 
+the training process.
+\begin{figure}[htbp]
+
+    \centering
+    \includegraphics[width=0.8\textwidth]{./training_lossses.png}
+    \caption{Training losses over epochs for different network 
+    architectures.Panels (a-c) loss function for the training set.
+    Panels(d-f) loss function for the validation set. Each row 
+    correspond to 32 (panels (a) and (d)), 64 (panels (b) and (e)) 
+    and 128 (panels (c) and (f)) hidden units per layer respectively.}
+    \label{fig:training_losses}
+\end{figure}
+
+\begin{itemize}
+    \item As the number hidden units increase, the lower loss reached.
+    \item The gaussian activation function has better performance
+\end{itemize}
+
+In Fig. \ref{fig:main_metrics} we show the evolution during 
+the training process for several global metrics that compute the error
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./main_metrics.png}
+    \caption{Metrics over validation set for different network 
+    architectures. Left column (a, c, and e) metrics with $\tanh$ 
+    activation function. Right column (b-d-f) gaussian activation 
+    function. Each row correspond to a different metric over the 
+    $\log_{10}$ of the TCS.}
+    \label{fig:main_metrics}
+\end{figure}
+
+\begin{itemize}
+    \item As the number hidden units increase, MAE and MRE seems to 
+    converge for gaussian activation.
+    \item $\tanh$ present some overfitting. 
+    \item The gaussian activation function has slightly better 
+    performance
+\end{itemize}
+
+In Fig. \ref{fig:max_metrics} we show the evolution during 
+the training process for several maximum of the former metrics 
+to understand the deviations over each model
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./metrics_max.png}
+    \caption{Maximum values of Metrics over validation set 
+    for different network architectures. 
+    Left column (a, c) metrics with $\tanh$ 
+    activation function. Right column (b-d) gaussian activation 
+    function. Each row correspond to a different metric over the 
+    $\log_{10}$ of the TCS.}
+    \label{fig:main_metrics}
+\end{figure}
+
+\begin{itemize}
+    \item This plot shows the power of gaussian activation.
+
+\end{itemize}
+
+\subsection{Evaluation stage}
+
+We perform some evaluations over the whole TCS training set 
+with the best models (128 hidden units) to understand the different 
+errors in $cm^2$. Even when we have determined that gaussian activation 
+has better performance, we show results for both activation types
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../performance_tanh.png}
+    \caption{Prediction of the MLP for CDW-EIS (left column) and 
+    CTMC (right column) as a function of the projectile impact energy.
+    Each row correspont to a different projectile charge from $ Z_P=1$ 
+    to $Z_P = 9$. Activation function: $\tanh$ }
+    \label{fig:performance_tanh}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../performance_gauss.png}
+    \caption{Prediction of the MLP for CDW-EIS (left column) and 
+    CTMC (right column) as a function of the projectile impact energy.
+    Each row correspont to a different projectile charge from $ Z_P=1$ 
+    to $Z_P = 9$. Activation function: gaussian.}
+    \label{fig:performance_gauss}
+\end{figure}
+
+
+\begin{itemize}
+    \item This plot shows the power of gaussian activation.
+
+\end{itemize}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\begin{itemize}
+    \item WE NEED TO DO THE EXPERIMENT WITH ZP HOLES AND ENERGY 
+    EXTRAPOLATIONS
+    \item WE NEED TO DEFINE RANGES OF INPUT ENERGIES IN THE 
+    INPUT PIPELINE
+    \item SEBASTIAN HAS TO PLOT THE SEMIEMPIRIC FIT!!!!
+    \item MISSING THE BENCHMARKING AGAINST THE CUBIC INTERPOLATOR. 
+    ASK TO MICHELE IN DEEP.
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your conclusions and future work.
+
+\begin{thebibliography}{99}
+
+\bibitem{ref1} Author, ``Title,'' \textit{Journal}, vol. X, pp. XX-XX, Year.
+
+\end{thebibliography}
+
+\end{document}

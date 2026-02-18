@@ -1,5 +1,7 @@
 import torch
 import numpy as np
+import logging
+
 
 def small_mid_huge_loss(pred, target):
     huge = torch.nn.MSELoss()
@@ -13,27 +15,33 @@ class GaussianActivation(torch.nn.Module):
 
     def forward(self, x):
         return torch.exp(-x**2)
+    
 
 class FlexibleNN(torch.nn.Module):
-    def __init__(self, input_dim, layers, activations, dropout_rate):
+    def __init__(self, input_dim, n_hidden, activations, dropout_rate):
         super().__init__()
         modules = []
-        dim_in = input_dim
-        self.lin1 = torch.nn.Linear(input_dim,128)
-        self.lin2 = torch.nn.Linear(128,128)
-        # self.lin3 = torch.nn.Linear(128,128)
+
+        self.lin1 = torch.nn.Linear(input_dim, n_hidden)
+        self.lin2 = torch.nn.Linear(n_hidden,n_hidden)
+        self.lin3 = torch.nn.Linear(n_hidden,n_hidden)
         # self.lin4 = torch.nn.Linear(128,128)
-        self.lin5 = torch.nn.Linear(128,1)
+        self.lin5 = torch.nn.Linear(n_hidden, 1)
         if activations == 'tanh':
             self.act = torch.nn.Tanh()
+            logging.info(f'using activation tanh')
         elif activations == 'relu':
             self.act = torch.nn.ReLU()
+            logging.info(f'using activation ReLU')
         elif activations == 'elu':
             self.act = torch.nn.ELU()
+            logging.info(f'using activation ELU')
         elif activations == 'logsigmoid':
             self.act = torch.nn.LogSigmoid()
+            logging.info(f'using activation LogSigmoid')
         elif activations == 'softplus':
             self.act = torch.nn.Softplus()
+            logging.info(f'using activation Softplus')
         elif activations == 'gauss':
             self.act = GaussianActivation()
 
@@ -44,8 +52,8 @@ class FlexibleNN(torch.nn.Module):
         x = self.dp(x)
         x = self.act(self.lin2(x))
         x = self.dp(x)
-        # x = self.act(self.lin3(x))
-        # x = self.dp(x)
+        x = self.act(self.lin3(x))
+        x = self.dp(x)
         # x = self.act(self.lin4(x))
         # x = self.dp(x)
         return self.lin5(x)
