@@ -34,6 +34,78 @@ bare projectiles with charges $Z_P$ ranging between 1 and 9
 \section{Methods}
 \label{sec:methods}
 
+\subsubsection{The training set}
+The training set consist in a number of $1013$ TCS. We have 
+calculated $ 513 $ TCS with the CDW-EIS model and the CTMC model 
+as it is specified in Table \ref{Table-TS}. It is important to 
+note that we have considered here the semiempiric model of Rudd 
+[poner cita] on an equal footing with the theoretical models.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Theory} & Number of Impact Energies & 
+Impact Energy Range (keV/amu) & Ion charges\\ \hline
+\textbf{CDW-EIS} & 37 & 10 - 100000 & 1 - 9\\ \hline
+\textbf{CTMC} & 20 & 15 - 2500 & 1 - 9\\ \hline
+\textbf{Semi Empiric} & 500 & 10 - 5000 & 1\\ \hline
+
+\end{tabular}
+\caption{Number and energy range of TCS calculated for each model.}
+\label{Table-TS}
+\end{table}
+
+Since MLP are not suitable to handle very tiny numbers nor 
+several orders of magnitude, as in the case of this 
+training set, we must perform a preprocessing stage that 
+include the data compression by taking the logarithm of the 
+impact energy and the  
+TCS. On the other hand, the categorical variable corresponding 
+to the theory must be casted to a numerical value. We choose 
+to expand a three dimensional Onem Hot encoding for the three 
+theories considered here. These preprocessing allow us to 
+avoid gradient vanishing in the backpropagation algorithm 
+used to fit the data because using tiny floating point 
+values for the energy and the TCS. Moreover, logarithm produce
+a compactacion of the several magnitude orders that TCS 
+present for the wide impact energies considered here.  
+
+\subsection{The model}
+To choice the architecture of the MLP we have performed 
+k-folded trainings over the training set for models with 
+hidden layers ranging from one to five, combining different 
+number of units per layer and activation functions. We noted that 
+increasing the number of layers become meaningless after a total 
+of three layers. On the other hand the use of different number 
+of units in the different layers did not improve the fitting, 
+for these reasons we choose to employ a MLP with three hidden 
+layers and present the study of the training performance for 
+the case with 32, 64 and 128 units per layer.
+As it is well known, to introduce non linearity in the MLPs, 
+some non linear activation functions must be used for each unit 
+output. Unlike the normal trend in of using the fast-to-compute 
+Rectifier Linear Unit activation (ReLU), in this work we use 
+two kind of infinite differentiable functions: the hyperbolic 
+tangent, and a gaussian activation. The choice of smooth 
+activation functions can be easily justified by the fact that 
+TCS are smooth functions of the impact energy, and extreme 
+non differentiable oscillating fits caused by ReLU and its 
+variations are naturally avoided.
+
+\begin{figure}[htbp]
+
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Esquema_ionNN.pdf}
+    \caption{Interpolator scheme}
+    \label{fig:scheme}
+\end{figure}
+
+We show in Figure \ref{fig:scheme} a scheme of the model used 
+in this work. After the preprocessing stage we have a 
+5-dimensional input, three hidden layers and a single output 
+corresponding to the $\log_{10}$ of the input energy.
+
 We use PyTorch framework to optimize the fitting of a multilayer 
 perceptron (MLP) over a set of pre-calculated ionization TCS.
 
@@ -48,15 +120,11 @@ energy, the charge of the projectile and the theory used
     semi-empirical formula for proton impact by Rudd et al.)
 \end{itemize}
 
-To understand the representation capability (fitting capability) 
-we use 3 identical hidden layers. We explore the case of 32, 64 or 
-128 hidden units per layer. For non-linearity we use as activation 
-functions infinite-differentiable functions, namely: the so used 
-$\tanh$ and a gaussian activation.
+\subsection{Training process}
+For the training process we use the Adam algorithm, which is based 
+in gradient descent algorithm. 
+To compute distances we use 
 
-The output layer represent the TCS. In the training stage 
-we optimize the network against the decimal logarithm of the TCS 
-in $cm^2$ to deal with numbers around 10. 
 
 \section{Results}
 \label{sec:results}
