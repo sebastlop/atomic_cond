@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.30)  9 MAR 2026 17:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.30)  10 MAR 2026 18:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -69,12 +69,9 @@ Class revtex4-2 Info: RevTeX society APS selected on input line 40.
 Class revtex4-2 Warning: No journal specified, using default pra.
 
 Class revtex4-2 Info: APS journal PRA selected on input line 7661.
-
-Class revtex4-2 Warning: No type size specified, using default 10.
-
-(/usr/share/texlive/texmf-dist/tex/latex/revtex/aps10pt4-2.rtx
-File: aps10pt4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for documentation)
-Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 39.
+(/usr/share/texlive/texmf-dist/tex/latex/revtex/aps12pt4-2.rtx
+File: aps12pt4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX pointsize 12pt selected on input line 39.
 ) (/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
@@ -318,9 +315,6 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__pdf_internal_box=\box69
 ) (./tests.aux
 
-LaTeX Warning: Label `Table-TS' multiply defined.
-
-
 LaTeX Warning: Label `fig:main_metrics' multiply defined.
 
 )
@@ -390,58 +384,51 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 39.
-
-<./Esquema_ionNN.pdf, id=57, 722.7pt x 341.275pt>
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<./Esquema_ionNN.pdf, id=75, 722.7pt x 341.275pt>
 File: ./Esquema_ionNN.pdf Graphic file (type pdf)
 <use ./Esquema_ionNN.pdf>
-Package pdftex.def Info: ./Esquema_ionNN.pdf  used on input line 101.
-(pdftex.def)             Requested size: 408.00156pt x 192.66971pt.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Package pdftex.def Info: ./Esquema_ionNN.pdf  used on input line 89.
+(pdftex.def)             Requested size: 374.40143pt x 176.80267pt.
+ [3 <./Esquema_ionNN.pdf>]
+<./metrics_loss.png, id=96, 722.7pt x 722.7pt>
+File: ./metrics_loss.png Graphic file (type png)
+<use ./metrics_loss.png>
+Package pdftex.def Info: ./metrics_loss.png  used on input line 159.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+ [4] [5 <./metrics_loss.png>]
+<./metrics_main.png, id=118, 722.7pt x 722.7pt>
+File: ./metrics_main.png Graphic file (type png)
+<use ./metrics_main.png>
+Package pdftex.def Info: ./metrics_main.png  used on input line 218.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./training_lossses.png, id=76, 722.7pt x 722.7pt>
-File: ./training_lossses.png Graphic file (type png)
-<use ./training_lossses.png>
-Package pdftex.def Info: ./training_lossses.png  used on input line 177.
-(pdftex.def)             Requested size: 408.00156pt x 408.00645pt.
-<./main_metrics.png, id=79, 722.7pt x 722.7pt>
-File: ./main_metrics.png Graphic file (type png)
-<use ./main_metrics.png>
-Package pdftex.def Info: ./main_metrics.png  used on input line 195.
-(pdftex.def)             Requested size: 408.00156pt x 408.00645pt.
+LaTeX Warning: Reference `fig:max_metrics' on page 6 undefined on input line 235.
 
-LaTeX Warning: Reference `fig:max_metrics' on page 2 undefined on input line 212.
-
-<./metrics_max.png, id=80, 722.7pt x 722.7pt>
+<./metrics_max.png, id=119, 722.7pt x 722.7pt>
 File: ./metrics_max.png Graphic file (type png)
 <use ./metrics_max.png>
-Package pdftex.def Info: ./metrics_max.png  used on input line 218.
-(pdftex.def)             Requested size: 408.00156pt x 408.00645pt.
-[2 <./Esquema_ionNN.pdf>]
-<../performance_tanh.png, id=101, 1156.32pt x 1806.75pt>
+Package pdftex.def Info: ./metrics_max.png  used on input line 241.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+<../performance_tanh.png, id=120, 1156.32pt x 1806.75pt>
 File: ../performance_tanh.png Graphic file (type png)
 <use ../performance_tanh.png>
-Package pdftex.def Info: ../performance_tanh.png  used on input line 243.
-(pdftex.def)             Requested size: 408.00156pt x 637.49977pt.
-
-
-LaTeX Warning: Float too large for page by 0.24977pt on input line 249.
-
-<../performance_gauss.png, id=102, 1156.32pt x 1806.75pt>
+Package pdftex.def Info: ../performance_tanh.png  used on input line 266.
+(pdftex.def)             Requested size: 374.40143pt x 584.98131pt.
+<../performance_gauss.png, id=121, 1156.32pt x 1806.75pt>
 File: ../performance_gauss.png Graphic file (type png)
 <use ../performance_gauss.png>
-Package pdftex.def Info: ../performance_gauss.png  used on input line 254.
-(pdftex.def)             Requested size: 408.00156pt x 637.49977pt.
+Package pdftex.def Info: ../performance_gauss.png  used on input line 277.
+(pdftex.def)             Requested size: 374.40143pt x 584.98131pt.
+[6]
+Overfull \hbox (7.36884pt too wide) in paragraph at lines 297--299
+[]\OT1/cmr/m/n/12 WE NEED TO DE-FINE RANGES OF IN-PUT EN-ER-GIES IN THE IN-PUT PIPELINE 
+ []
 
-LaTeX Warning: Float too large for page by 0.24977pt on input line 260.
-
+[7 <./metrics_main.png>]
 No file tests.bbl.
-[3] [4 <./training_lossses.png>] [5 <./main_metrics.png>] [6 <./metrics_max.png>] [7 <../performance_tanh.png>] [8 <../performance_gauss.png>] (./tests.aux)
+[8 <./metrics_max.png>] [9 <../performance_tanh.png>] [10 <../performance_gauss.png>] (./tests.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -452,18 +439,18 @@ Package rerunfilecheck Info: File `tests.out' has not changed.
 (rerunfilecheck)             Checksum: EE1EFA5C4E007E3D4601776D6045ACA6;1489.
  ) 
 Here is how much of TeX's memory you used:
- 11915 strings out of 480247
- 178638 string characters out of 5896151
- 510096 words of memory out of 5000000
- 29677 multiletter control sequences out of 15000+600000
- 475961 words of font info for 54 fonts, out of 8000000 for 9000
+ 11932 strings out of 480247
+ 178865 string characters out of 5896151
+ 489150 words of memory out of 5000000
+ 29689 multiletter control sequences out of 15000+600000
+ 477702 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,10n,63p,494b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/sebastian/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on tests.pdf (8 pages, 1331579 bytes).
+ 60i,11n,63p,629b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/sebastian/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tests.pdf (10 pages, 1553717 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  135 words of extra memory for PDF output out of 10000 (max. 10000000)
 
