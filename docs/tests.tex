@@ -131,19 +131,19 @@ In Eq. (\ref{Eq-loss-err}) three different metrics are added,
     L_{2}(y_{true},y_{pred}) & =  \frac{1}{N} 
     \sum_{i=1}^{N}{ \left( y_{pred} - y_{true} \right) ^2}
     \label{Eq-l2-mse}  \\  
-    Rel(y_{true},y_{pred}) & =  \frac{1}{N} 
+    R(y_{true},y_{pred}) & =  \frac{1}{N} 
     \sum_{i=1}^{N}{ \left| \frac{y_{pred} - y_{true}}{y_{true}} \right|}.
     \label{Eq-rel-rel}
 \end{align}
 
-Usually, $L_1$, $L_2$, and $Rel$ are named as the mean 
+Usually, $L_1$, $L_2$, and $R$ are named as the mean 
 absolute error (MAE), the mean squared error (MSE) and 
-the relative error, respectively. We combine these three 
+the mean relative error (MRE), respectively. We combine these three 
 measures in order to guide the optimization algorithm 
 for the different ranges in the $\log_{10}(TCS)$. 
 While on one hand MSE ponderates big differences, especially 
 where target values are higher, the MAE does it at intermediate 
-regions. On the other hand, $Rel$ runs over whole range 
+regions. On the other hand, $R$ runs over whole range 
 on equal footing.
 
 As we are dealing with analytic activation functions, 
@@ -153,7 +153,6 @@ algorithm with an initial learning rate of $lr=1\times10^{-4}$
 to \emph{backpropagate} the model and update the parameters.
 
 \begin{figure}[htbp]
-
     \centering
     \includegraphics[width=0.8\textwidth]{./metrics_loss.png}
     \caption{Averaged in 5-folded loss functions calculated over 
@@ -170,25 +169,29 @@ to \emph{backpropagate} the model and update the parameters.
 
 First, we want to point out that the increase of $N_L$ above two 
 hidden layers does not produce significant improvements. A 
-similar behavior occur with the increasing of $N_H$ above 
-$N_H =128$ as can be observed in Fig. \ref{fig:training_losses}. 
+similar behavior occurs with the increasing of $N_H$ above 
+$N_H =128$, as can be observed in Fig. \ref{fig:training_losses}. 
 In this Figure we show the evolution of both
 loss function during the hyperparamenter exploration process 
 as function of the iteration number or \emph{epoch} of the 
 optimization process. Moreover, we observe that 
-$\mathcal{L}^{ERR}_{\theta}$ produces more soft optimization 
+$\mathcal{L}^{ERR}_{\theta}$ produces a more soft optimization 
 curves, and, except for the case of $N_H=32$ with $\tanh$ 
 activation function in panel (d) this loss does not produce 
-overfitting or increasing in the optimization process. The 
-opposite behavior can be observed for 
+overfitting or an increase of the loss during the optimization 
+process. The opposite behavior can be observed for 
 $\mathcal{L}^{LCH}_{\theta}$ in panels (c), (e) and (g). 
 In the following, we use $\mathcal{L}^{ERR}_{\theta}$ 
 as the loss function. We also observe that gaussian 
-activation is more adequate, but some other metrics can 
-be analyzed to decide the activation function to use.
-
-In Fig. \ref{fig:main_metrics} we show the evolution during 
-the training process for several global metrics that compute the error
+activation is more adequate. To examinate the behavior 
+of the three terms of $\mathcal{L}^{ERR}_{\theta}$ 
+we show in Fig. \ref{fig:main_metrics} the evolution during 
+the training process for mean error functions over the validation 
+set. The error computed are MAE (panels (a) and (b)), 
+RMSE in panels (c) and (d), and MRE shown in panels (e) and (f).
+The left column correspond to $\tan$ activation, meanwhile the 
+right column to gaussian activation function respectively finding 
+a behavior that confirms the use of $N_H=128$.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{./metrics_main.png}
@@ -200,48 +203,34 @@ the training process for several global metrics that compute the error
     \label{fig:main_metrics}
 \end{figure}
 
-\begin{itemize}
-    \item As the number hidden units increase, MAE and MRE seems to 
-    converge for gaussian activation.
-    \item $\tanh$ present some overfitting. 
-    \item The gaussian activation function has slightly better 
-    performance
-\end{itemize}
 
-In Fig. \ref{fig:max_metrics} we show the evolution during 
-the training process for several maximum of the former metrics 
-to understand the deviations over each model
+To get a deep understand of the activation function we explore 
+the evolution of the maximum of the errors instead of mean values
+in Fig. \ref{fig:max_metrics}. In this Figure we observe that 
+gaussian activation exhibits monotonically decreasing errors 
+for $N_H \le 128$ hidden units, in contrast to $\tanh$ activation 
+which shows more erratic behavior. 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{./metrics_max.png}
-    \caption{Maximum values of Metrics over validation set 
+    \caption{Maximum values of metrics over validation set 
     for different network architectures. 
     Left column (a, c) metrics with $\tanh$ 
     activation function. Right column (b-d) gaussian activation 
     function. Each row correspond to a different metric over the 
     $\log_{10}$ of the TCS.}
-    \label{fig:main_metrics}
+    \label{fig:max_metrics}
 \end{figure}
 
-\begin{itemize}
-    \item This plot shows the power of gaussian activation.
-
-\end{itemize}
-
-
-
-\subsection{Training process}
-For the training process we use the Adam algorithm, which is based 
-in gradient descent algorithm. 
-To compute distances we use 
+With the above results we decide to use as the optimum model 
+a MLP with two hidden layers with 128 units each, using a gaussian
+activation function.
 
 \section{Results}
 \label{sec:results}
 
-\subsection{Training process}
-
-
+Number of parameters:  17409
 
 \subsection{Evaluation stage}
 
