@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex tests"] 1773198095.5001 "tests.aux" "tests.bbl" "tests" 1773198101.03393 0
-  "./testsNotes.bib" 1773198099 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex tests"] 1773235704.26019 "tests.aux" "tests.bbl" "tests" 1773235712.76507 0
+  "./testsNotes.bib" 1773235710 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/bibtex/bst/revtex/apsrev4-2.bst" 1685674058 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "tests.aux" 1773198099 6628 1c8c3c2338bd1370c4b9597ab43d3652 "pdflatex"
+  "tests.aux" 1773235710 6624 43dfb4a47988b3b42e4b795330ef25eb "pdflatex"
   (generated)
   "tests.bbl"
   "tests.blg"
   (rewritten before read)
-["pdflatex"] 1773198096.19305 "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" "tests.pdf" "tests" 1773198101.03618 0
+["pdflatex"] 1773235705.18177 "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" "tests.pdf" "tests" 1773235712.76693 0
   "../performance_gauss.png" 1772590383 547182 7186d092f5e6a34ccead2a685d058584 ""
   "../performance_tanh.png" 1772590383 558574 fade2b5d3f48b61b9836d3965b074873 ""
   "C:/Users/sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768413792 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -109,14 +109,14 @@
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Esquema_ionNN.pdf" 1772847902 27753 c21a4e57b65fe8e06476068b08056ba2 ""
-  "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" 1773198089 12248 1cb806633e69cb234d1ded88a4194ddd ""
+  "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" 1773235693 11509 97df2e6a01de9a6daf75bd15d107a087 ""
   "metrics_loss.png" 1773196528 233046 24b5a5bc5446ba3e675cdbf6969f1655 ""
   "metrics_main.png" 1773196528 260260 bb769ab83c7c7e3dab174c323ac64708 ""
   "metrics_max.png" 1773196528 235885 771b60cca8dee387136ea8cfca14ae8e ""
-  "tests.aux" 1773198099 6628 1c8c3c2338bd1370c4b9597ab43d3652 "pdflatex"
-  "tests.bbl" 1773198096 2035 35453d3875d823f0ec9445e740a573d9 "bibtex tests"
-  "tests.out" 1773198099 1489 ee1efa5c4e007e3d4601776d6045aca6 "pdflatex"
-  "tests.tex" 1773198089 12248 1cb806633e69cb234d1ded88a4194ddd ""
+  "tests.aux" 1773235710 6624 43dfb4a47988b3b42e4b795330ef25eb "pdflatex"
+  "tests.bbl" 1773235705 2035 35453d3875d823f0ec9445e740a573d9 "bibtex tests"
+  "tests.out" 1773235710 1489 ee1efa5c4e007e3d4601776d6045aca6 "pdflatex"
+  "tests.tex" 1773235693 11509 97df2e6a01de9a6daf75bd15d107a087 ""
   (generated)
   "tests.aux"
   "tests.log"

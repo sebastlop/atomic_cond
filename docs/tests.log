@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.2)  11 MAR 2026 00:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.2)  11 MAR 2026 10:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -403,43 +403,43 @@ File: ./Esquema_ionNN.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Esquema_ionNN.pdf  used on input line 89.
 (pdftex.def)             Requested size: 374.40143pt x 176.80267pt.
  [3 <./Esquema_ionNN.pdf>]
-<./metrics_loss.png, id=95, 722.7pt x 722.7pt>
+<./metrics_loss.png, id=94, 722.7pt x 722.7pt>
 File: ./metrics_loss.png Graphic file (type png)
 <use ./metrics_loss.png>
-Package pdftex.def Info: ./metrics_loss.png  used on input line 168.
+Package pdftex.def Info: ./metrics_loss.png  used on input line 158.
 (pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
- [4] [5 <./metrics_loss.png>]
-<./metrics_main.png, id=118, 722.7pt x 722.7pt>
+ [4]
+<./metrics_main.png, id=110, 722.7pt x 722.7pt>
 File: ./metrics_main.png Graphic file (type png)
 <use ./metrics_main.png>
-Package pdftex.def Info: ./metrics_main.png  used on input line 228.
+Package pdftex.def Info: ./metrics_main.png  used on input line 194.
 (pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+ [5 <./metrics_loss.png>]
 
-
-LaTeX Warning: Reference `fig:max_metrics' on page 6 undefined on input line 245.
+LaTeX Warning: Reference `fig:max_metrics' on page 6 undefined on input line 211.
 
 <./metrics_max.png, id=119, 722.7pt x 722.7pt>
 File: ./metrics_max.png Graphic file (type png)
 <use ./metrics_max.png>
-Package pdftex.def Info: ./metrics_max.png  used on input line 251.
+Package pdftex.def Info: ./metrics_max.png  used on input line 217.
 (pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
-[6]
-<../performance_tanh.png, id=125, 1156.32pt x 1806.75pt>
+[6 <./metrics_main.png>] [7 <./metrics_max.png>]
+<../performance_tanh.png, id=132, 1156.32pt x 1806.75pt>
 File: ../performance_tanh.png Graphic file (type png)
 <use ../performance_tanh.png>
-Package pdftex.def Info: ../performance_tanh.png  used on input line 276.
+Package pdftex.def Info: ../performance_tanh.png  used on input line 256.
 (pdftex.def)             Requested size: 374.40143pt x 584.98131pt.
-<../performance_gauss.png, id=126, 1156.32pt x 1806.75pt>
+<../performance_gauss.png, id=133, 1156.32pt x 1806.75pt>
 File: ../performance_gauss.png Graphic file (type png)
 <use ../performance_gauss.png>
-Package pdftex.def Info: ../performance_gauss.png  used on input line 287.
+Package pdftex.def Info: ../performance_gauss.png  used on input line 267.
 (pdftex.def)             Requested size: 374.40143pt x 584.98131pt.
- [7 <./metrics_main.png>]
-Overfull \hbox (7.36884pt too wide) in paragraph at lines 307--309
+
+Overfull \hbox (7.36884pt too wide) in paragraph at lines 287--289
 []\OT1/cmr/m/n/12 WE NEED TO DE-FINE RANGES OF IN-PUT EN-ER-GIES IN THE IN-PUT PIPELINE 
  []
 
-[8 <./metrics_max.png>] [9 <../performance_tanh.png>] [10 <../performance_gauss.png>] (tests.bbl) [11] (tests.aux)
+(tests.bbl) [8] [9 <../performance_tanh.png>] [10 <../performance_gauss.png>] (tests.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -455,17 +455,17 @@ Package rerunfilecheck Info: File `tests.out' has not changed.
 (rerunfilecheck)             Checksum: EE1EFA5C4E007E3D4601776D6045ACA6;1489.
  ) 
 Here is how much of TeX's memory you used:
- 12326 strings out of 473530
- 185327 string characters out of 5714795
- 609757 words of memory out of 5000000
+ 12325 strings out of 473530
+ 185320 string characters out of 5714795
+ 609755 words of memory out of 5000000
  35374 multiletter control sequences out of 15000+600000
  567280 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,700b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,700b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sebas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tests.pdf (11 pages, 1576902 bytes).
+Output written on tests.pdf (10 pages, 1575158 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
+ 223 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
  135 words of extra memory for PDF output out of 10000 (max. 10000000)
 
