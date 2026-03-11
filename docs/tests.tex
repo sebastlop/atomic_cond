@@ -41,7 +41,7 @@ The training set consist in a number of $1013$ TCS. We have
 calculated $ 513 $ TCS with the CDW-EIS model and the CTMC model 
 as it is specified in Table \ref{Table-TS}. It is important to 
 note that we have considered here the semiempiric model of Rudd 
-[poner cita] on an equal footing with the theoretical models.
+(RSEM) [poner cita] on an equal footing with the theoretical models.
 
 \begin{table}[h!]
 \centering
@@ -225,39 +225,41 @@ which shows more erratic behavior.
 
 With the above results we decide to use as the optimum model 
 a MLP with two hidden layers with 128 units each, using a gaussian
-activation function.
+activation function. This model has a total of 17409 trainable 
+parameters.
 
 \section{Results}
 \label{sec:results}
 
-Number of parameters:  17409
+In this work we fit total cross sections calculated by means of the 
+CDW-EIS, CTMC, and the RSEM for ionization of hydrogen by bare 
+projectiles with charges ranging from 1 to 9. 
 
-\subsection{Evaluation stage}
+This section can be divided in two main parts: one with the 
+fits for the TCS for each case and the other with numerical 
+experiments retraining models with missing data for particular 
+projectile charges.
 
-We perform some evaluations over the whole TCS training set 
-with the best models (128 hidden units) to understand the different 
-errors in $cm^2$. Even when we have determined that gaussian activation 
-has better performance, we show results for both activation types
+
+\subsection{Evaluation of the fits}
+
+We perform evaluations over the whole TCS training set 
+with the best model found in the previous section to understand 
+the different errors in $cm^2$. It is important to note that 
+we have interpolated the $\log_{10}(TCS)$, which lead to 
+errors different to those shown in the previous section.
+
 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{../performance_tanh.png}
-    \caption{Prediction of the MLP for CDW-EIS (left column) and 
-    CTMC (right column) as a function of the projectile impact energy.
-    Each row correspont to a different projectile charge from $ Z_P=1$ 
-    to $Z_P = 9$. Activation function: $\tanh$ }
-    \label{fig:performance_tanh}
-\end{figure}
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../performance_gauss.png}
-    \caption{Prediction of the MLP for CDW-EIS (left column) and 
-    CTMC (right column) as a function of the projectile impact energy.
-    Each row correspont to a different projectile charge from $ Z_P=1$ 
-    to $Z_P = 9$. Activation function: gaussian.}
+    \includegraphics[width=0.8\textwidth]{./performance_CDWEIS.png}
+    \caption{Solid lines: Prediction of the MLP for CDW-EIS as a function of the 
+    projectile impact energy for different $Z_p$. Orange stars: calculated TCS. 
+    Panels (a) to (g) correspond to $ Z_P=1$ to $Z_P = 9$ respectively. 
+    Relative error is drawn as green filled curve. The right 
+    axis scale correspond to the percentage relative error calculated at the 
+    ground truth values of the TCS.}
     \label{fig:performance_gauss}
 \end{figure}
 

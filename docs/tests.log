@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.30)  11 MAR 2026 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.30)  11 MAR 2026 19:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -355,4 +355,87 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 10.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Packag
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+ (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count296
+)
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
+ (./tests.out) (./tests.out)
+\@outlinefile=\write4
+\openout4 = `tests.out'.
+
+Class revtex4-2 Info: Taking \maketitle back from hyperref on input line 10.
+\openout3 = `testsNotes.bib'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<./Esquema_ionNN.pdf, id=67, 722.7pt x 341.275pt>
+File: ./Esquema_ionNN.pdf Graphic file (type pdf)
+<use ./Esquema_ionNN.pdf>
+Package pdftex.def Info: ./Esquema_ionNN.pdf  used on input line 89.
+(pdftex.def)             Requested size: 374.40143pt x 176.80267pt.
+ [3 <./Esquema_ionNN.pdf>]
+<./metrics_loss.png, id=87, 722.7pt x 722.7pt>
+File: ./metrics_loss.png Graphic file (type png)
+<use ./metrics_loss.png>
+Package pdftex.def Info: ./metrics_loss.png  used on input line 157.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+<./metrics_main.png, id=91, 722.7pt x 722.7pt>
+File: ./metrics_main.png Graphic file (type png)
+<use ./metrics_main.png>
+Package pdftex.def Info: ./metrics_main.png  used on input line 197.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+ [4] [5 <./metrics_loss.png>]
+<./metrics_max.png, id=112, 722.7pt x 722.7pt>
+File: ./metrics_max.png Graphic file (type png)
+<use ./metrics_max.png>
+Package pdftex.def Info: ./metrics_max.png  used on input line 216.
+(pdftex.def)             Requested size: 374.40143pt x 374.40567pt.
+ [6 <./metrics_main.png>] [7 <./metrics_max.png>]
+<./performance_CDWEIS.png, id=125, 1156.32pt x 867.24pt>
+File: ./performance_CDWEIS.png Graphic file (type png)
+<use ./performance_CDWEIS.png>
+Package pdftex.def Info: ./performance_CDWEIS.png  used on input line 256.
+(pdftex.def)             Requested size: 374.40143pt x 280.79102pt.
+
+Overfull \hbox (7.36884pt too wide) in paragraph at lines 278--280
+[]\OT1/cmr/m/n/12 WE NEED TO DE-FINE RANGES OF IN-PUT EN-ER-GIES IN THE IN-PUT PIPELINE 
+ []
+
+[8 <./performance_CDWEIS.png>]
+No file tests.bbl.
+[9] (./tests.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `tests.out' has not changed.
+(rerunfilecheck)             Checksum: B9E4916B2A0F3917AEFC1F026B4F2AEF;1247.
+ ) 
+Here is how much of TeX's memory you used:
+ 11916 strings out of 480247
+ 178574 string characters out of 5896151
+ 492370 words of memory out of 5000000
+ 29679 multiletter control sequences out of 15000+600000
+ 477395 words of font info for 58 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 60i,11n,63p,697b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/sebastian/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tests.pdf (9 pages, 949362 bytes).
+PDF statistics:
+ 209 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
+

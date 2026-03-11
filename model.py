@@ -24,7 +24,7 @@ class FlexibleNN(torch.nn.Module):
 
         self.lin1 = torch.nn.Linear(input_dim, n_hidden)
         self.lin2 = torch.nn.Linear(n_hidden,n_hidden)
-        self.lin3 = torch.nn.Linear(n_hidden,n_hidden)
+        # self.lin3 = torch.nn.Linear(n_hidden,n_hidden)
         # self.lin4 = torch.nn.Linear(128,128)
         self.lin5 = torch.nn.Linear(n_hidden, 1)
         if activations == 'tanh':
@@ -52,8 +52,8 @@ class FlexibleNN(torch.nn.Module):
         x = self.dp(x)
         x = self.act(self.lin2(x))
         x = self.dp(x)
-        x = self.act(self.lin3(x))
-        x = self.dp(x)
+        # x = self.act(self.lin3(x))
+        # x = self.dp(x)
         # x = self.act(self.lin4(x))
         # x = self.dp(x)
         return self.lin5(x)
