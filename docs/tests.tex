@@ -80,7 +80,7 @@ theories considered here.
 
 We show in Figure \ref{fig:scheme} a scheme of the model used 
 in this work. After the preprocessing stage we have a MLP with a 
-5-dimensional input, then the hidden layers and a single output 
+5-dimensional input, then the hidden layers ($N_L$) and a single output 
 corresponding to the $\log_{10}$ of the TCS.
 
 \begin{figure}[htbp]
@@ -94,8 +94,9 @@ corresponding to the $\log_{10}$ of the TCS.
 To find the best architecture of the MLP, as the 
 training set is not big enough, we have performed averaging
 over a k-fold split over the training set, and the corresponding 
-training for models with hidden layers ranging from one to five, 
-with different number of units per layer ($2^n$ for $n = 
+training for models with hidden layers ranging from one to five 
+($N_L = 1,...5$), 
+with different number of units per layer ($N_H = 2^n$ for $n = 
 \{4,...,8\}$).
 As it is well known, to introduce non linearity in the MLPs, 
 non linear activation functions must be used for each unit 
@@ -140,76 +141,51 @@ absolute error (MAE), the mean squared error (MSE) and
 the relative error, respectively. We combine these three 
 measures in order to guide the optimization algorithm 
 for the different ranges in the $\log_{10}(TCS)$. 
-Meanwhile, on one hand MSE ponderates differences where 
-target values are higher, the MAE does it at intermediate 
+While on one hand MSE ponderates big differences, especially 
+where target values are higher, the MAE does it at intermediate 
 regions. On the other hand, $Rel$ runs over whole range 
 on equal footing.
 
-We are dealing with analytic activation functions, 
-thus we can use the gradient descent algorithm 
+As we are dealing with analytic activation functions, 
+we can use the gradient descent algorithm 
 or any variant of it. In this work we use the Adam 
 algorithm with an initial learning rate of $lr=1\times10^{-4}$
 to \emph{backpropagate} the model and update the parameters.
 
-In Fig. \ref{fig:training_losses} we show the losses evolution during 
-the training process.
 \begin{figure}[htbp]
 
     \centering
     \includegraphics[width=0.8\textwidth]{./metrics_loss.png}
     \caption{Averaged in 5-folded loss functions calculated over 
-    the validation set as function of the epoch. The number of 
-    hidden layers is two and 
-    Left column: training loss for 
-    $\mathcal{L}_\theta^{LCH}$ as the Panels (a-c) loss function for the training set.
-    Panels(d-f) loss function for the validation set. Each row 
-    correspond to 32 (panels (a) and (d)), 64 (panels (b) and (e)) 
-    and 128 (panels (c) and (f)) hidden units per layer respectively.}
+    the training and the validation sets as function of the epoch. In all the cases 
+    the number of layesrs $N_L = 2$. Left column: 
+    $\mathcal{L}_\theta^{LCH}$ loss function, right column: 
+    $\mathcal{L}_\theta^{ERR}$ loss function. Each row correspond 
+    to architectures with increasing number of hidden units 
+    $N_H = \left\{16, 32, 64, 128, 256, 512\right\}$, shown in
+    panels (a) and (b); (c) and (d); (e) and (f); (g) and (h); 
+    and (i) and (j), respectively.}
     \label{fig:training_losses}
 \end{figure}
 
-We show in Fig. (\ref{fig:training_losses}) 
-
-We use PyTorch framework to optimize the fitting of a multilayer perceptron (MLP) over a set of pre-calculated
-ionization TCS.
-
-The architecture of the MLP has an input of the projectile impact 
-energy, the charge of the projectile and the theory used
-
-\begin{itemize}
-    \item Impact energy: we use decimal logarithm to flat the data in 
-    usable ranges $\approx 10$
-    \item Projectile charge: casted to float
-    \item Theory: we one-hot encode the theory used (CTMC, CDW-EIS and 
-    semi-empirical formula for proton impact by Rudd et al.)
-\end{itemize}
-
-
-\begin{itemize}
-    \item As the number hidden units increase, the lower loss reached.
-    \item The gaussian activation function has better performance
-\end{itemize}
-
-VA CON 
-
-We noted that 
-increasing the number of layers become meaningless after a total 
-of three layers. On the other hand the use of different number 
-of units in the different layers did not improve the fitting, 
-for these reasons we choose to employ a MLP with three hidden 
-layers and present the study of the training performance for 
-the case with 32, 64 and 128 units per layer.
-
-\subsection{Training process}
-For the training process we use the Adam algorithm, which is based 
-in gradient descent algorithm. 
-To compute distances we use 
-
-\section{Results}
-\label{sec:results}
-
-\subsection{Training process}
-
+First, we want to point out that the increase of $N_L$ above two 
+hidden layers does not produce significant improvements. A 
+similar behavior occur with the increasing of $N_H$ above 
+$N_H =128$ as can be observed in Fig. \ref{fig:training_losses}. 
+In this Figure we show the evolution of both
+loss function during the hyperparamenter exploration process 
+as function of the iteration number or \emph{epoch} of the 
+optimization process. Moreover, we observe that 
+$\mathcal{L}^{ERR}_{\theta}$ produces more soft optimization 
+curves, and, except for the case of $N_H=32$ with $\tanh$ 
+activation function in panel (d) this loss does not produce 
+overfitting or increasing in the optimization process. The 
+opposite behavior can be observed for 
+$\mathcal{L}^{LCH}_{\theta}$ in panels (c), (e) and (g). 
+In the following, we use $\mathcal{L}^{ERR}_{\theta}$ 
+as the loss function. We also observe that gaussian 
+activation is more adequate, but some other metrics can 
+be analyzed to decide the activation function to use.
 
 In Fig. \ref{fig:main_metrics} we show the evolution during 
 the training process for several global metrics that compute the error
@@ -252,6 +228,20 @@ to understand the deviations over each model
     \item This plot shows the power of gaussian activation.
 
 \end{itemize}
+
+
+
+\subsection{Training process}
+For the training process we use the Adam algorithm, which is based 
+in gradient descent algorithm. 
+To compute distances we use 
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Training process}
+
+
 
 \subsection{Evaluation stage}
 
