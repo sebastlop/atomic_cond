@@ -266,14 +266,33 @@ errors different to those shown in the previous section.
     \centering
     \includegraphics[width=0.8\textwidth]{./performance_CTMC.png}
     \caption{Prediction of the MLP and percentage relative 
-    errors as in Fig.  for CTMC calculations 
+    errors as in Fig. \ref{fig:performance_cdweis} for CTMC calculations 
     as a function of the 
     projectile impact energy for different $Z_p$. }
     \label{fig:performance_ctmc}
 \end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./performance_RSEM.png}
+    \caption{Prediction of the MLP and percentage relative 
+    errors as in Fig. \ref{fig:performance_cdweis} for RSEM calculations 
+    as a function of the 
+    projectile impact energy for $Z_p = 1$. }
+    \label{fig:performance_rsem}
+\end{figure}
+
 We show in Figures \ref{fig:performance_cdweis} and \ref{fig:performance_ctmc} 
-the performance for MLP to fit 
+the performance for MLP to fit the calculated data. We observe 
+relative errors below five percent for high energies where the 
+cross sections present smooth changes. In the low energy region 
+where TCS changes several orders of magnitude the error raises up to 
+15\%. In the case of RSEM fitting, the error is under 3\%. The main reason of 
+this accuracy is directly related to the number of TCS calculated for training.
+At this point is very important to recall that MLP is a single regressor for 
+the three models and the 9 projectile charges considered here, i.e. all the 
+curves are reproduced with the same fitting model.
+
 
 
 \begin{itemize}
