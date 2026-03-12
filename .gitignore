@@ -1,4 +1,11 @@
 .venv/
 __pycache__/
 performance_checks/
-performance.ipynb
+.synctex.gz
+.aux
+.bbl
+.blg
+.fdb_latexmk
+.fls
+.log
+.out
