@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.2)  11 MAR 2026 23:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.2)  11 MAR 2026 23:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -444,17 +444,14 @@ L3 programming layer <2025-01-18>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `tests.out' has not changed.
 (rerunfilecheck)             Checksum: B9E4916B2A0F3917AEFC1F026B4F2AEF;1247.
  ) 
 Here is how much of TeX's memory you used:
- 12322 strings out of 473530
- 185287 string characters out of 5714795
- 611880 words of memory out of 5000000
- 35374 multiletter control sequences out of 15000+600000
+ 12321 strings out of 473530
+ 185264 string characters out of 5714795
+ 612066 words of memory out of 5000000
+ 35373 multiletter control sequences out of 15000+600000
  567280 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,700b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s

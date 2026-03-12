@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex tests"] 1773280457.96623 "tests.aux" "tests.bbl" "tests" 1773280465.60965 0
-  "./testsNotes.bib" 1773280463 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex tests"] 1773281521.09417 "tests.aux" "tests.bbl" "tests" 1773281530.20012 0
+  "./testsNotes.bib" 1773281527 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/bibtex/bst/revtex/apsrev4-2.bst" 1685674058 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "tests.aux" 1773280463 6050 9f54b777fad60f5543f345ae7a81ed45 "pdflatex"
+  "tests.aux" 1773281527 6546 c2ad599342c835ca8163400863a5f70c "pdflatex"
   (generated)
   "tests.bbl"
   "tests.blg"
   (rewritten before read)
-["pdflatex"] 1773280458.82114 "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" "tests.pdf" "tests" 1773280465.61282 0
+["pdflatex"] 1773281522.17217 "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" "tests.pdf" "tests" 1773281530.20368 0
   "C:/Users/sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768413792 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/sebas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1738640736 14064 27a29863803b794e0b4b8a14a111cf78 ""
   "C:/Users/sebas/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1738509311 12017794 62883abcb99e7a9ba560d682642b9528 ""
@@ -107,15 +107,16 @@
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Esquema_ionNN.pdf" 1772847902 27753 c21a4e57b65fe8e06476068b08056ba2 ""
-  "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" 1773280444 11837 b1feee635cd2da21073fd4431998be0e ""
+  "c:/Users/sebas/Documents/codes/atomic_cond/docs/tests.tex" 1773281502 12230 b9947f8b8f69d364e09f664f7dc509c7 ""
   "metrics_loss.png" 1773196528 233046 24b5a5bc5446ba3e675cdbf6969f1655 ""
   "metrics_main.png" 1773196528 260260 bb769ab83c7c7e3dab174c323ac64708 ""
   "metrics_max.png" 1773196528 235885 771b60cca8dee387136ea8cfca14ae8e ""
   "performance_CDWEIS.png" 1773280444 298801 48d0338d21edb8582ac64b3b0a7a067d ""
-  "tests.aux" 1773280463 6050 9f54b777fad60f5543f345ae7a81ed45 "pdflatex"
-  "tests.bbl" 1773280458 2035 35453d3875d823f0ec9445e740a573d9 "bibtex tests"
-  "tests.out" 1773280463 1247 b9e4916b2a0f3917aefc1f026b4f2aef "pdflatex"
-  "tests.tex" 1773280444 11837 b1feee635cd2da21073fd4431998be0e ""
+  "performance_CTMC.png" 1773280444 302483 9cf8aa0b5dab82f04d5b60d30e54e6e0 ""
+  "tests.aux" 1773281527 6546 c2ad599342c835ca8163400863a5f70c "pdflatex"
+  "tests.bbl" 1773281521 2035 35453d3875d823f0ec9445e740a573d9 "bibtex tests"
+  "tests.out" 1773281527 1247 b9e4916b2a0f3917aefc1f026b4f2aef "pdflatex"
+  "tests.tex" 1773281502 12230 b9947f8b8f69d364e09f664f7dc509c7 ""
   (generated)
   "tests.aux"
   "tests.log"
