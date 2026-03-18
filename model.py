@@ -58,14 +58,13 @@ class FlexibleNN(torch.nn.Module):
         # x = self.dp(x)
         return self.lin5(x)
 
-def predict_conditional(model, one_hot_encoder, theory: str, Z_proj, Z_target, values):
+def predict_conditional(model, one_hot_encoder, theory: str, Z_proj,  values):
     # assertions
 
     # --- input tensor creation
     enc_array = one_hot_encoder.transform([[theory]])
     input_tensor = torch.hstack([
                   torch.FloatTensor(np.ones_like(values).reshape(-1,1)*Z_proj),
-                  torch.FloatTensor(np.ones_like(values).reshape(-1,1)*Z_target),
                   torch.FloatTensor(values.reshape(-1,1)),
                   torch.FloatTensor(np.repeat(enc_array.reshape(1,-1), values.shape[0], axis=0))
                   ]).requires_grad_(False)

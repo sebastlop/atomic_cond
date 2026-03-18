@@ -5,7 +5,6 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{colortbl}
 
 \begin{document}
 
@@ -17,7 +16,7 @@
 \date{\today}
 
 \begin{abstract}
-Some numerical test about training and testing of cross section fitting 
+Some numerical tests about training and testing of cross section fitting 
 using neural networks
 \end{abstract}
 
@@ -27,7 +26,7 @@ using neural networks
 \label{sec:intro}
 
 We use a neural network as universal interpolator to 
-fit calculations of total cross sections (TCS) within two theoretical 
+fit calculations of total cross sections (TCS) using two theoretical 
 models, namely the Continuum-Distorted-Wave with Eikonal-Initial
 -State (CDW-EIS) and the Classical Trajectory MonteCarlo (CTMC)
 for ionization of hydrogen by bare ion impact. Here we consider
@@ -37,10 +36,10 @@ bare projectiles with charges $Z_P$ ranging between 1 and 9
 \label{sec:methods}
 
 \subsection{The training set}
-The training set consist in a number of $1013$ TCS. We have 
+The training set consist of a number of $1013$ TCS. We have 
 calculated $ 513 $ TCS with the CDW-EIS model and the CTMC model 
 as it is specified in Table \ref{Table-TS}. It is important to 
-note that we have considered here the semiempiric model of Rudd 
+note that we have considered here the semiempirical-model of Rudd 
 (RSEM) [poner cita] on an equal footing with the theoretical models.
 
 \begin{table}[h!]
@@ -60,19 +59,19 @@ Impact Energy Range (keV/amu) & Ion charges\\ \hline
 
 The input variables are, the impact energy,
 the projectile charge, and the theory used to obtain the TCS.
-Since MLPs are not suitable to handle very tiny numbers nor 
+Since MLPs are not suitable for handling very tiny numbers nor 
 several orders of magnitude, as in the case of this 
 training set, we must perform a preprocessing stage that 
-include the data compression by taking the decimal logarithm of the 
-impact energy and the TCS. These preprocessing allow us to 
+includes data compression by taking the decimal logarithm of the 
+impact energy and the TCS. This preprocessing allow us to 
 avoid gradient vanishing in the backpropagation algorithm 
-used to fit the data because using tiny floating point 
+used to fit the data due to the use of tiny floating point 
 values for the energy and the TCS. Moreover, logarithm produce
-a compactacion of the several magnitude orders that TCS 
+a compression of the several orders of magnitude that TCS 
 present for the wide impact energies considered here.  
 On the other hand, the categorical 
 variable corresponding 
-to the theory must be casted to a numerical value. We choose 
+to the theory must be cast to a numerical value. We choose 
 to expand a three dimensional One Hot Encoding for the three 
 theories considered here.
 
@@ -102,18 +101,18 @@ As it is well known, to introduce non linearity in the MLPs,
 non linear activation functions must be used for each unit 
 output. Unlike the usual trend to use the fast-to-compute 
 Rectifier Linear Unit activation function (ReLU), in this work we use 
-two kind of infinite differentiable functions: the hyperbolic 
+two kinds of infinitely differentiable functions: the hyperbolic 
 tangent, and a gaussian activation. The choice of smooth 
 activation functions can be easily justified by the fact that 
 TCS are smooth functions of the impact energy, and extreme 
-non differentiable oscillating fits caused by ReLU and its 
+non-differentiable oscillating fits caused by ReLU and its 
 variations are naturally avoided.
 
 This fitting process is a typical supervised learning. In supervised 
 learning some \emph{distance} function between the model prediction $y_{pred}$ 
 and the true value $y_{true}$ must be computed. This \emph{distance} 
 function, is called the loss function $\mathcal{L}_{\theta}$, where $\theta$ 
-refer to the MLP parameters. In this work we explore two loss functions
+refers to the MLP parameters. In this work we explore two loss functions
 
 \begin{align}
     \mathcal{L}_{\theta}^{LCH}(y_{true},y_{pred}) & =  
@@ -141,7 +140,7 @@ absolute error (MAE), the mean squared error (MSE) and
 the mean relative error (MRE), respectively. We combine these three 
 measures in order to guide the optimization algorithm 
 for the different ranges in the $\log_{10}(TCS)$. 
-While on one hand MSE ponderates big differences, especially 
+While on one hand MSE emphasizes big differences, especially 
 where target values are higher, the MAE does it at intermediate 
 regions. On the other hand, $R$ runs over whole range 
 on equal footing.
@@ -175,10 +174,10 @@ In this Figure we show the evolution of both
 loss function during the hyperparamenter exploration process 
 as function of the iteration number or \emph{epoch} of the 
 optimization process. Moreover, we observe that 
-$\mathcal{L}^{ERR}_{\theta}$ produces a more soft optimization 
+$\mathcal{L}^{ERR}_{\theta}$ produces a smoother optimization 
 curves, and, except for the case of $N_H=32$ with $\tanh$ 
 activation function in panel (d) this loss does not produce 
-overfitting or an increase of the loss during the optimization 
+overfitting or an increase in the loss during the optimization 
 process. The opposite behavior can be observed for 
 $\mathcal{L}^{LCH}_{\theta}$ in panels (c), (e) and (g). 
 In the following, we use $\mathcal{L}^{ERR}_{\theta}$ 
@@ -246,7 +245,7 @@ projectile charges.
 We perform evaluations over the whole TCS training set 
 with the best model found in the previous section to understand 
 the different errors in $cm^2$. It is important to note that 
-we have interpolated the $\log_{10}(TCS)$, which lead to 
+we have interpolated the $\log_{10}(TCS)$, which leads to 
 errors different to those shown in the previous section.
 
 \begin{figure}[htbp]
@@ -289,29 +288,74 @@ cross sections present smooth changes. In the low energy region
 where TCS changes several orders of magnitude the error raises up to 
 15\%. In the case of RSEM fitting, the error is under 3\%. The main reason of 
 this accuracy is directly related to the number of TCS calculated for training.
-At this point is very important to recall that MLP is a single regressor for 
+At this point, it is very important to recall that MLP is a single regressor for 
 the three models and the 9 projectile charges considered here, i.e. all the 
 curves are reproduced with the same fitting model.
 
+\subsection{Interpolation and extrapolation}
+
+To address the power of the MLP as interpolator, we perform a fitting 
+process excluding the data of TCS calculated for $Z_P=3$. The architecture 
+of the MLP (the hypeperparameters) remains untouched respect to the full 
+training set. We perform a splitting for validation as in the former case, 
+and explore the ability to interpolate over the unseen by the model data.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./performance_gausshole_3.png}
+    \caption{Prediction of the MLP and percentage relative 
+    errors as in Fig. \ref{fig:performance_cdweis} for TCS calculated within 
+    CDWEIS (panel(a)) and CTMC (panel(b)) as a function of the 
+    projectile impact energy for $Z_p = 3$. Stars: calculations, 
+    solid lines: MLP interpolation.}
+    \label{fig:performance_interpolation_3}
+\end{figure}
 
 
-\begin{itemize}
-    \item This plot shows the power of gaussian activation.
+We show in the Figure \ref{fig:performance_interpolation_3} the results 
+compared to the calculated cross sections as function of the projectile  
+impact energy. We observe a remarkable behavior of the model to 
+interpolate TCS for two theories and a wide range of energies in the 
+$Z_P$ axis. Naturally, as it was observed in the former fitting case of 
+this dataset, the MLP present higher percentage relative errors for low 
+impact energies where the TCS vary several orders of magnitude.
 
-\end{itemize}
+To explore the extrapolation case, we perform a similar analysis excluding 
+the case of $Z_P=9$, this means that we push the model to extrapolate TCS 
+for the whole energy range and the two thoretical models.
+We show in Fig. \ref{fig:performance_extrapolation_9} results for 
+extrapolation case. Results are not as good as in the case 
+of interpolation, but naturally, the predictions are smooth, since 
+gaussian activations are used, and relative errors does not exceed 35\% 
+in the whole impact energy range considered, except for the case of CDW-EIS at 
+$E_P = 10 keV/u$
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./performance_gausshole_9.png}
+    \caption{Prediction of the MLP and percentage relative 
+    errors as in Fig. \ref{fig:performance_cdweis} for TCS calculated within 
+    CDWEIS (panel(a)) and CTMC (panel(b)) as a function of the 
+    projectile impact energy for $Z_p = 9$. Stars: calculations, 
+    solid lines: MLP extrapolation.}
+    \label{fig:performance_extrapolation_9}
+\end{figure}
+
+
+% \begin{table}[h]
+%     \centering
+%     \begin{tabular}{|l|cc|cc|cc|cc|}
+%         \hline
+%         \textbf{Hole} & \multicolumn{2}{c|}{\textbf{MAE}} & \multicolumn{2}{c|}{\textbf{MRE}} & \multicolumn{2}{c|}{\textbf{MAX MAE}} & \multicolumn{2}{c|}{\textbf{MAX MRE}} \\ \cline{2-9} 
+%                       & All & Holes & All & Holes & All & Holes & All & Holes \\ \hline 
+%         3             &     &       &     &       &     &       &     &       \\
+%         3,4           &     &       &     &       &     &       &     &       \\ \hline
+%     \end{tabular}
+% \end{table}
 
 \section{Discussion}
 \label{sec:discussion}
 
-\begin{itemize}
-    \item WE NEED TO DO THE EXPERIMENT WITH ZP HOLES AND ENERGY 
-    EXTRAPOLATIONS
-    \item WE NEED TO DEFINE RANGES OF INPUT ENERGIES IN THE 
-    INPUT PIPELINE
-    \item SEBASTIAN HAS TO PLOT THE SEMIEMPIRIC FIT!!!!
-    \item MISSING THE BENCHMARKING AGAINST THE CUBIC INTERPOLATOR. 
-    ASK TO MICHELE IN DEEP.
-\end{itemize}
 
 \section{Conclusion}
 \label{sec:conclusion}
